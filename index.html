@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Mobile-first viewport: prevents scaling, respects notch -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#FFB6C8" />
+  <title>Happy 1 Year of Togetherness 💕</title>
+  <meta name="description" content="A special anniversary surprise — unlock a love letter by answering some questions." />
+
+  <!-- Google Font: Quicksand -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- FLOATING HEARTS (JS fills) -->
+  <div id="hearts-bg" aria-hidden="true"></div>
+
+  <!-- HEART BURST (JS fills) -->
+  <div id="heart-burst-container" class="heart-burst-container" aria-hidden="true"></div>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button id="lightbox-close" aria-label="Close photo">✕</button>
+    <img id="lightbox-img" src="" alt="Full size photo" />
+  </div>
+
+  <!-- MAIN APP -->
+  <main id="app">
+
+    <!-- ==========================================
+         SCREEN 0 — SPLASH
+         ========================================== -->
+    <section id="splash-screen" class="screen active" aria-label="Welcome">
+
+      <!-- Corner stickers (JS fills) -->
+      <div id="splash-stickers" aria-hidden="true"></div>
+
+      <div class="splash-card">
+
+        <img
+          src="stickers/s1_scooter.webp"
+          alt="Bubu and Dudu"
+          class="splash-main-sticker"
+        />
+
+        <h1 class="splash-title">Happy 1 Year of Togetherness 💕</h1>
+
+        <p class="splash-tagline">
+          There's a special message waiting for you…
+        </p>
+        <p class="splash-sub">
+          But first — unlock it by answering some
+          <em>easy</em> questions 😏 (tough for U 😜)
+        </p>
+
+        <button id="start-btn" aria-label="Start the quiz">
+          <span class="btn-heart">💗</span>
+          Open my surprise
+        </button>
+
+      </div>
+    </section><!-- /splash-screen -->
+
+
+    <!-- ==========================================
+         SCREEN 1 — QUIZ
+         ========================================== -->
+    <section id="quiz-screen" class="screen" aria-label="Quiz">
+
+      <header class="quiz-header">
+        <h2 class="quiz-title">Happy 1 Year of Togetherness 💕</h2>
+        <p class="quiz-subtitle">Unlock your special surprise by answering some basic questions</p>
+      </header>
+
+      <!-- Progress dots -->
+      <nav class="progress-dots" aria-label="Quiz progress">
+        <span class="dot active" aria-label="Question 1"></span>
+        <span class="dot" aria-label="Question 2"></span>
+        <span class="dot" aria-label="Question 3"></span>
+        <span class="dot" aria-label="Question 4"></span>
+        <span class="dot" aria-label="Question 5"></span>
+      </nav>
+
+      <!-- Question card -->
+      <div id="question-card" class="question-card" role="form">
+        <p id="question-number" class="question-number">Question 1 of 5</p>
+        <p id="question-text"   class="question-text"></p>
+
+        <!-- Letter input boxes (JS fills) -->
+        <div id="letter-inputs" class="letter-inputs" role="group" aria-label="Answer boxes"></div>
+
+        <!-- Wrong answer feedback -->
+        <p id="feedback" class="feedback" role="alert" aria-live="polite"></p>
+      </div>
+
+      <!-- Sticker characters -->
+      <div class="quiz-stickers-row" aria-hidden="true">
+
+        <div class="sticker-wrap">
+          <img
+            id="bubu-sticker"
+            src="stickers/s2_caring.webp"
+            alt="Bubu"
+            class="quiz-sticker"
+          />
+          <span class="sticker-label">BUBU</span>
+        </div>
+
+        <div class="sticker-wrap">
+          <img
+            src="stickers/s4_sleeping.webp"
+            alt="Hearts"
+            class="quiz-sticker quiz-sticker--center"
+          />
+        </div>
+
+        <div class="sticker-wrap">
+          <img
+            id="dudu-sticker"
+            src="stickers/s3_eating.webp"
+            alt="Dudu"
+            class="quiz-sticker"
+          />
+          <span class="sticker-label">DUDU</span>
+        </div>
+
+      </div><!-- /quiz-stickers-row -->
+
+    </section><!-- /quiz-screen -->
+
+
+    <!-- ==========================================
+         SCREEN 2 — FINAL PAGE
+         ========================================== -->
+    <section id="final-screen" class="screen" aria-label="Your surprise message">
+
+      <h2 class="final-title">For You, Always 💕</h2>
+      <p class="final-subtitle">From your bubu, with all his heart ✨</p>
+
+      <!-- Love letter message (JS fills lines) -->
+      <div id="message-card" class="message-card" role="region" aria-label="Special message"></div>
+
+      <!-- ENVELOPE — tap to reveal shayri -->
+      <div class="envelope-section" id="envelope-section">
+        <p class="envelope-label">💌 A shayri made for you</p>
+
+        <div class="envelope-wrap" id="envelope-wrap" role="button" tabindex="0" aria-label="Open envelope to read shayri" aria-expanded="false">
+
+          <!-- Letter slides up on open -->
+          <div class="envelope-letter" id="envelope-letter">
+            <p class="letter-heading">✦ Sirf Tumhare Liye ✦</p>
+            <div class="letter-divider">🌹</div>
+            <p class="shayri-line">जीता हुआ आशिक़ भी वो सदमे से मर गया,</p>
+            <p class="shayri-line">तुझ पर जो एक शायरी बेख़ौफ़ लिखी है।</p>
+            <p class="shayri-line shayri-line--gap">मेरे पास तू हँसती हुई आँखें न लाया कर,</p>
+            <p class="shayri-line">मेरी कुंडली में डूबने से मौत लिखी है।</p>
+            <div class="letter-divider letter-divider--bottom">— तुम्हारा बुबू 💕</div>
+          </div>
+
+          <!-- Envelope body -->
+          <div class="envelope-body">
+            <div class="envelope-flap"></div>
+            <div class="envelope-seal">💕</div>
+          </div>
+
+        </div><!-- /envelope-wrap -->
+
+        <p class="envelope-hint" id="envelope-hint">👆 Tap the envelope to open</p>
+      </div><!-- /envelope-section -->
+
+      <!-- Sticker strip (JS fills) -->
+      <div id="final-stickers" aria-hidden="true"></div>
+
+      <!-- Photo gallery -->
+      <h3 class="gallery-title">Our Moments 📸</h3>
+      <div id="photo-gallery" class="photo-gallery" role="list" aria-label="Photo gallery"></div>
+
+      <!-- Footer -->
+      <span class="footer-heart" aria-hidden="true">💕</span>
+      <p class="footer-text">Made with love, just for you ✨</p>
+
+    </section><!-- /final-screen -->
+
+  </main><!-- /app -->
+
+  <script src="script.js"></script>
+</body>
+</html>
